@@ -6,7 +6,7 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 # from rest_framework.authtoken.views import ObtainAuthToken
 
-
+import os
 import psycopg2
 
 # Create your views here.
@@ -24,7 +24,11 @@ class BankDetailAPIView(viewsets.ViewSet):
 
 		ifsc = self.request.GET['ifsc']
 
-		conn = psycopg2.connect("dbname='test1' user='postgres' host='localhost' password='harshit' connect_timeout=1 ")
+		DATABASE_URL = os.environ['DATABASE_URL']
+
+		conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
+		# conn = psycopg2.connect("dbname='test1' user='postgres' host='localhost' password='harshit' connect_timeout=1 ")
 		cur  = conn.cursor()
 
 		cur.execute("SELECT * FROM infos2 WHERE ifsc='{}';".format(ifsc))
@@ -63,7 +67,11 @@ class AllBranchesAPIView(viewsets.ViewSet):
 		limit     = int(self.request.GET['limit'])
 		offset    = int(self.request.GET['offset'])
 
-		conn = psycopg2.connect("dbname='test1' user='postgres' host='localhost' password='harshit' connect_timeout=1 ")
+		DATABASE_URL = os.environ['DATABASE_URL']
+
+		conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
+		# conn = psycopg2.connect("dbname='test1' user='postgres' host='localhost' password='harshit' connect_timeout=1 ")
 		cur  = conn.cursor()
 
 		cur.execute("SELECT * FROM infos2 WHERE bank_name='{}' AND city='{}'".format(bank_name,city))
