@@ -89,7 +89,7 @@ class AllBranchesAPIView(viewsets.ViewSet):
 		li_lenght = len(li)
 
 		my_dict = {}
-		my_dict['testlength']=li_lenght
+		my_dict['Total NUmber of Banks in {}'.format(city)]=li_lenght
 		if li_lenght > 0 :
 			a = offset
 			if a <= (li_lenght-1):
