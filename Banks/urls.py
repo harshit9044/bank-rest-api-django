@@ -16,8 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
+from bank.views import homeview
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/',include('bank.urls'))
+    path('api/',include('bank.urls')),
+    path('',homeview),
 ]

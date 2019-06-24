@@ -4,6 +4,8 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
+
+from django.http import HttpResponse
 # from rest_framework.authtoken.views import ObtainAuthToken
 
 import os
@@ -14,6 +16,13 @@ import psycopg2
 # @api_view()
 # def bank_detail(request):
 # 	""" Used to get the details of a particular bank provided IFSC code """
+
+def homeview(request):
+
+	return HttpResponse("""
+		<h2>WELCOME TO BANK REST API</h2>
+		<h4>add /api to the url to see the api endpoints .</h4>
+		""")
 
 
 class BankDetailAPIView(viewsets.ViewSet):
@@ -77,14 +86,24 @@ class AllBranchesAPIView(viewsets.ViewSet):
 		cur.execute("SELECT * FROM infos2 WHERE bank_name='{}' AND city='{}'".format(bank_name,city))
 
 		li = cur.fetchall()
+		li_lenght = len(li)
 
 		my_dict = {}
-		if li is not None :
+		my_dict['testlength']=li_lenght
+		if li_lenght > 0 :
 			a = offset
-			for k in range(offset,offset+limit) :
-				i = li[k]
-				my_dict[a]=i
-				a += 1
+			if a <= (li_lenght-1):
+				b=-1
+				if limit <= (li_lenght-offset) :
+					b = limit
+				else :
+					b = li_lenght-offset
+				for k in range(offset,offset+b) :
+					i = li[k]
+					my_dict[a]=i
+					a += 1
+			else :
+				my_dict['message']="offset out of limit .This number of items are not available ."
 		else :
 			my_dict['message']='No Banks'
 
