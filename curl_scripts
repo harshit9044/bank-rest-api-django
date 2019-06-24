@@ -7,23 +7,23 @@
 curl -X POST -d "username=harshit@&password=harshit@" "http://rest-api-banks.herokuapp.com/api/token/"
 
 # Refreshing the access token
-curl -X POST -d "refresh=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU2Mzg5NjgyOSwianRpIjoiZjU2MDRiZWE1NTMxNGJlMzhhNmE4ODA3MTdkNDZiYmQiLCJ1c2VyX2lkIjoxfQ.MaN49T-JwCbR6ZscXZ_I8dWoXIg_qLDccR-zwBJ4fTA" "http://rest-api-banks.herokuapp.com/api/token-refresh/"
+curl -X POST -d "refresh=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTU2Mzk4Nzg3NSwianRpIjoiZjMyMjM1Yjc5Njc3NDEwZmFjYWNmODMxMjU0NTZhOTgiLCJ1c2VyX2lkIjoxfQ.1NPbh8r3upwtu9PKfOz_LuG6jp9nh9cTVeu6OXvRD7Q" "http://rest-api-banks.herokuapp.com/api/token-refresh/"
 
 # Fetching list of API endpoints
 curl "http://rest-api-banks.herokuapp.com/api/"
 
 # Fetching the details of a bank provided an ifsc code , ifsc=ABHY0065001
-curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTYxNzM2ODI5LCJqdGkiOiIwNDRkMTM3ZGFmODc0ZWUzYTBmNmNlMThiYTBiODFkMiIsInVzZXJfaWQiOjF9.ncNEBNznviGrMJdQ6YE59mBfU_WgBs_cbKewRyG_N3U" "http://rest-api-banks.herokuapp.com/api/bank-detail/?ifsc=ABHY0065001"
+curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTYxODI3ODc1LCJqdGkiOiJjZTVhZjU0MmYyMjA0OGJmYmUyYzI0NjUwYWY5MzQ4MiIsInVzZXJfaWQiOjF9.ziQjul3Lj_7xxdBUyAgcdLCUGGIpWt2zrCOCj6wczWo" "http://rest-api-banks.herokuapp.com/api/bank-detail/?ifsc=ABHY0065001"
 
 # Fetching the details of a bank provided an ifsc code , ifsc=ALLA0211748
-curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTYxNzM2ODI5LCJqdGkiOiIwNDRkMTM3ZGFmODc0ZWUzYTBmNmNlMThiYTBiODFkMiIsInVzZXJfaWQiOjF9.ncNEBNznviGrMJdQ6YE59mBfU_WgBs_cbKewRyG_N3U" "http://rest-api-banks.herokuapp.com/api/bank-detail/?ifsc=ALLA0211748"
+curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTYxODI3ODc1LCJqdGkiOiJjZTVhZjU0MmYyMjA0OGJmYmUyYzI0NjUwYWY5MzQ4MiIsInVzZXJfaWQiOjF9.ziQjul3Lj_7xxdBUyAgcdLCUGGIpWt2zrCOCj6wczWo" "http://rest-api-banks.herokuapp.com/api/bank-detail/?ifsc=ALLA0211748"
 
 
 # Fetching Bank list with city=MUMBAI ,bank-name=ABHYUDAYA COOPERATIVE BANK LIMITED ,limit=6 and offset=2
-curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTYxNzM2ODI5LCJqdGkiOiIwNDRkMTM3ZGFmODc0ZWUzYTBmNmNlMThiYTBiODFkMiIsInVzZXJfaWQiOjF9.ncNEBNznviGrMJdQ6YE59mBfU_WgBs_cbKewRyG_N3U" "http://rest-api-banks.herokuapp.com/api/all-banks/?bank-name=ABHYUDAYA%20COOPERATIVE%20BANK%20LIMITED&city=MUMBAI&limit=6&offset=2"
+curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTYxODI3ODc1LCJqdGkiOiJjZTVhZjU0MmYyMjA0OGJmYmUyYzI0NjUwYWY5MzQ4MiIsInVzZXJfaWQiOjF9.ziQjul3Lj_7xxdBUyAgcdLCUGGIpWt2zrCOCj6wczWo" "http://rest-api-banks.herokuapp.com/api/all-banks/?bank-name=ABHYUDAYA%20COOPERATIVE%20BANK%20LIMITED&city=MUMBAI&limit=6&offset=2"
 
 # Fetching Bank list with city=MUMBAI ,bank-name=ABHYUDAYA COOPERATIVE BANK LIMITED ,limit=3 and offset=0
-curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTYxNzM2ODI5LCJqdGkiOiIwNDRkMTM3ZGFmODc0ZWUzYTBmNmNlMThiYTBiODFkMiIsInVzZXJfaWQiOjF9.ncNEBNznviGrMJdQ6YE59mBfU_WgBs_cbKewRyG_N3U" "http://rest-api-banks.herokuapp.com/api/all-banks/?bank-name=ABHYUDAYA%20COOPERATIVE%20BANK%20LIMITED&city=MUMBAI&limit=3&offset=0"
+curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTYxODI3ODc1LCJqdGkiOiJjZTVhZjU0MmYyMjA0OGJmYmUyYzI0NjUwYWY5MzQ4MiIsInVzZXJfaWQiOjF9.ziQjul3Lj_7xxdBUyAgcdLCUGGIpWt2zrCOCj6wczWo" "http://rest-api-banks.herokuapp.com/api/all-banks/?bank-name=ABHYUDAYA%20COOPERATIVE%20BANK%20LIMITED&city=MUMBAI&limit=3&offset=0"
 
 # Fetching Bank list with city=LUDHIANA ,bank-name=ANDHRA BANK ,limit=3 and offset=0
-curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTYxNzM2ODI5LCJqdGkiOiIwNDRkMTM3ZGFmODc0ZWUzYTBmNmNlMThiYTBiODFkMiIsInVzZXJfaWQiOjF9.ncNEBNznviGrMJdQ6YE59mBfU_WgBs_cbKewRyG_N3U" "http://rest-api-banks.herokuapp.com/api/all-banks/?bank-name=ANDHRA%20BANK&city=LUDHIANA&limit=3&offset=0"
+curl -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTYxODI3ODc1LCJqdGkiOiJjZTVhZjU0MmYyMjA0OGJmYmUyYzI0NjUwYWY5MzQ4MiIsInVzZXJfaWQiOjF9.ziQjul3Lj_7xxdBUyAgcdLCUGGIpWt2zrCOCj6wczWo" "http://rest-api-banks.herokuapp.com/api/all-banks/?bank-name=ANDHRA%20BANK&city=LUDHIANA&limit=3&offset=0"
