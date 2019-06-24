@@ -42,28 +42,32 @@ class BankDetailAPIView(viewsets.ViewSet):
 
 		cur.execute("SELECT * FROM infos2 WHERE ifsc='{}';".format(ifsc))
 		obj = cur.fetchall()
-		ifsc = obj[0][0]
-		bank_id = obj[0][1]
-		branch  = obj[0][2]
-		address = obj[0][3]
-		city    = obj[0][4]
-		district= obj[0][5]
-		state   = obj[0][6]
-		bank_name=obj[0][7]
-		# print(ifsc)
-		# print(obj[0][0],obj[0][1])
-		# print(type(obj))
-		
-		return Response({
-				'Bank Name':bank_name,
-				"IFSC":ifsc,
-				'Bank ID':bank_id,
-				'BRANCH':branch,
-				'City':city,
-				'District':district,
-				'State':state,
-				'Address':address,
-			})
+
+		if len(obj) > 0 :
+			ifsc = obj[0][0]
+			bank_id = obj[0][1]
+			branch  = obj[0][2]
+			address = obj[0][3]
+			city    = obj[0][4]
+			district= obj[0][5]
+			state   = obj[0][6]
+			bank_name=obj[0][7]
+			# print(ifsc)
+			# print(obj[0][0],obj[0][1])
+			# print(type(obj))
+			
+			return Response({
+					'Bank Name':bank_name,
+					"IFSC":ifsc,
+					'Bank ID':bank_id,
+					'BRANCH':branch,
+					'City':city,
+					'District':district,
+					'State':state,
+					'Address':address,
+				})
+		else :
+			return Response({'message':'Bank with this IFSC code does not exist in our DATABASE'})
 
 
 class AllBranchesAPIView(viewsets.ViewSet):
