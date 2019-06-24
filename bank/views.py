@@ -27,7 +27,7 @@ def my_connection():
 	# return conn.cursor()
 	DATABASE_URL = os.environ['DATABASE_URL']
 	conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-	return conn
+	return conn.cursor()
 
 def homeview(request):
 
