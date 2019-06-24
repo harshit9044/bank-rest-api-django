@@ -16,6 +16,15 @@ import psycopg2
 # @api_view()
 # def bank_detail(request):
 # 	""" Used to get the details of a particular bank provided IFSC code """
+# DATABASE_URL = os.environ['DATABASE_URL']
+# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+cur = None
+# conn = psycopg2.connect("dbname='test1' user='postgres' host='localhost' password='harshit' connect_timeout=1 ")
+# return conn.cursor()
+
+def my_connection():
+	conn = psycopg2.connect("dbname='test1' user='postgres' host='localhost' password='harshit' connect_timeout=1 ")
+	return conn.cursor()
 
 def homeview(request):
 
@@ -32,13 +41,9 @@ class BankDetailAPIView(viewsets.ViewSet):
 	def list(self,request):
 
 		ifsc = self.request.GET['ifsc']
-
-		DATABASE_URL = os.environ['DATABASE_URL']
-
-		conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
-		# conn = psycopg2.connect("dbname='test1' user='postgres' host='localhost' password='harshit' connect_timeout=1 ")
-		cur  = conn.cursor()
+		global cur
+		if cur is None :
+			cur = my_connection()
 
 		cur.execute("SELECT * FROM infos2 WHERE ifsc='{}';".format(ifsc))
 		obj = cur.fetchall()
@@ -80,12 +85,15 @@ class AllBranchesAPIView(viewsets.ViewSet):
 		limit     = int(self.request.GET['limit'])
 		offset    = int(self.request.GET['offset'])
 
-		DATABASE_URL = os.environ['DATABASE_URL']
+		# DATABASE_URL = os.environ['DATABASE_URL']
 
-		conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+		# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
-		# conn = psycopg2.connect("dbname='test1' user='postgres' host='localhost' password='harshit' connect_timeout=1 ")
-		cur  = conn.cursor()
+		# # conn = psycopg2.connect("dbname='test1' user='postgres' host='localhost' password='harshit' connect_timeout=1 ")
+		# cur  = conn.cursor()
+		global cur
+		if cur is None :
+			cur = my_connection()
 
 		cur.execute("SELECT * FROM infos2 WHERE bank_name='{}' AND city='{}'".format(bank_name,city))
 
