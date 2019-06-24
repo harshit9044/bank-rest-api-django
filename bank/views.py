@@ -23,8 +23,11 @@ cur = None
 # return conn.cursor()
 
 def my_connection():
-	conn = psycopg2.connect("dbname='test1' user='postgres' host='localhost' password='harshit' connect_timeout=1 ")
-	return conn.cursor()
+	# conn = psycopg2.connect("dbname='test1' user='postgres' host='localhost' password='harshit' connect_timeout=1 ")
+	# return conn.cursor()
+	DATABASE_URL = os.environ['DATABASE_URL']
+	conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+	return conn
 
 def homeview(request):
 
